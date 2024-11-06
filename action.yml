@@ -1,0 +1,43 @@
+name: "Discord Action"
+description: "Discord Action to send messages with webhooks"
+inputs:
+  webhookUrl:
+    description: "Discord webhook URL"
+    required: true
+  message:
+    description: "Message to send"
+    required: true
+  embedTitle:
+    description: "Embed title"
+    required: false
+  embedDescription:
+    description: "Embed description"
+    required: false
+  embedUrl:
+    description: "Embed URL"
+    required: false
+  embedColor:
+    description: "Embed color (decimal)"
+    required: false
+  embedFooter:
+    description: "Embed footer text"
+    required: false
+  embedImage:
+    description: "Embed image URL"
+    required: false
+  embedThumbnail:
+    description: "Embed thumbnail URL"
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.webhookUrl }}
+    - ${{ inputs.message }}
+    - ${{ inputs.embedTitle }}
+    - ${{ inputs.embedDescription }}
+    - ${{ inputs.embedUrl }}
+    - ${{ inputs.embedColor }}
+    - ${{ inputs.embedFooter }}
+    - ${{ inputs.embedImage }}
+    - ${{ inputs.embedThumbnail }}
